@@ -5,6 +5,7 @@ from fintools.utils import timeit, method_caching
 
 logger = get_logger(name=__name__)
 
+
 class Main:
 
     def __init__(self):
