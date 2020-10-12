@@ -1,6 +1,26 @@
 {
-    "updated_at": "2020-01-01 00:00:00",
+    "updated_at": "2020-10-12 21:01:09",
     "candidates": [
-
+        {
+            "created_at": "2020-10-12 04:36:39",
+            "updated_at": "2020-10-12 04:36:39",
+            "email": "alice@example.com",
+            "age": 23,
+            "income": 25000
+        },
+        {
+            "created_at": "2020-10-12 04:36:55",
+            "updated_at": "2020-10-12 21:01:09",
+            "email": "bob@example.com",
+            "age": 27,
+            "income": 18000
+        },
+        {
+            "created_at": "2020-10-12 04:37:15",
+            "updated_at": "2020-10-12 04:37:15",
+            "email": "carol@example.com",
+            "age": 32,
+            "income": 35000
+        }
     ]
 }
