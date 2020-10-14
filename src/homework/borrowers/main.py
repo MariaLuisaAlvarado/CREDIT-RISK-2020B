@@ -11,8 +11,10 @@ class Main:
     @staticmethod
     def show(file: str = DEFAULT_FILENAME) -> str:
         logger.info("Calling the show method.")
-        # TODO: read file and show content
-        pass
+        with open(file, 'r') as f:
+            return (f.read())
+    # TODO: read file and show content
+    # TODO: read file an
 
     @staticmethod
     def insert(email: str, age: int, income: float, file: str = DEFAULT_FILENAME):
