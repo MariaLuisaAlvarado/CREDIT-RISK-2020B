@@ -8,5 +8,5 @@ class Main:
     @staticmethod
     def show(file: str) -> str:
         logger.info("Calling the show method.")
-        with open(file,'w') as f:
+        with open(file, 'w') as f:
             f.read()
