@@ -1,4 +1,5 @@
 from typing import Dict, Optional
+import json
 
 
 class CashFlow:
@@ -29,7 +30,7 @@ class CashFlow:
         if reverse is not True:
             res1, res2 = self.pv(r), other.pv(r)
             ans = res1 + res2
-            return ans
+            return json.dumps(ans)
         else:
             if self.n > other.n:
                 res1 = self
@@ -38,7 +39,7 @@ class CashFlow:
                 res1 = self.shift(other.n, r)
                 res2 = other
             ans = res1 + res2
-            return ans
+            return json.dumps(ans)
 
     def to_dict(self, decimal_places: Optional[int] = 2) -> Dict:
         return {
