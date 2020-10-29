@@ -21,25 +21,38 @@ class CashFlow:
         return ans
 
     def shift(self, n: int, r: float) -> 'CashFlow':
-        if self.n > n:
-            return CashFlow(self.amount, n).fv(r)
-        else:
-            return CashFlow(self.amount, n).pv(r)
+        p_v = CashFlow(self.amount, self.n).pv(r)
+        return CashFlow(p_v.amount, n).fv(r)
 
     def merge(self, other: 'CashFlow', r: float, reverse: bool = False) -> 'CashFlow':
         if reverse is not True:
-            res1, res2 = self.pv(r), other.pv(r)
-            ans = res1 + res2
-            return json.dumps(ans)
-        else:
-            if self.n > other.n:
-                res1 = self
-                res2 = other.shift(self.n, r)
+            if self.n != 0:
+                p1 = CashFlow(self.amount, self.n).pv(r)
             else:
-                res1 = self.shift(other.n, r)
-                res2 = other
-            ans = res1 + res2
-            return json.dumps(ans)
+                p1 = self
+            if other.n != 0:
+                p2 = other.pv(r)
+
+            else:
+                p2 = other
+
+            ans = CashFlow(p1.amount+p2.amount, 0)
+            return ans
+        else:
+            a = [self.n if self.n > other.n else other.n]
+            if self.n == 0:
+                p1 = self.shift(a[0], r)
+                print(p1.amount)
+            else:
+                p1 = self
+                print(p1.amount)
+            if other.n == 0:
+                p2 = other.shift(a[0], r)
+                print(p2.amount)
+            else:
+                p2 = other
+                print(p2.amount)
+            return CashFlow(p1.amount+p2.amount, a[0])
 
     def to_dict(self, decimal_places: Optional[int] = 2) -> Dict:
         return {
