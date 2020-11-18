@@ -7,12 +7,15 @@ class Main:
 
     @staticmethod
     def annuity(amount: float, rate: float, n: int):
-        raise NotImplementedError
+        return Amortization(amount, rate, n).annuity
 
     @staticmethod
     def table(amount: float, rate: float, n: int, save_file: Optional[str] = None):
-        raise NotImplementedError
+        table2 = Amortization(amount, rate, n).get_table(save_file)
+        table2_df = table2.to_string()
+        return table2_df
 
     @staticmethod
     def plot(amount: float, rate: float, n: int, save_file: Optional[str] = None):
-        raise NotImplementedError
+        am = Amortization(amount, rate, n)
+        return am.plot(save_file)
