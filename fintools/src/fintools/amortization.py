@@ -54,5 +54,3 @@ class Amortization:
         if save_file is not None:
             fig.savefig(save_file)
         plt.show()
-
-
